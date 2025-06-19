@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights Bakery</title>
+    <style>
+        :root {
+            --primary-color: #f8bbd0;
+            --secondary-color: #7b5d5f;
+            --accent-color: #d81b60;
+            --light-color: #fff9fb;
+            --dark-color: #2a2223;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            text-transform: capitalize;
+        }
+        
+        .product-name {
+            font-size: 1.4rem;
+            margin: 0.5rem 0;
+            color: var(--dark-color);
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 0.5rem 0;
+        }
+        
+        .product-size {
+            color: var(--secondary-color);
+            margin: 0.5rem 0;
+        }
+        
+        .product-offer {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 1px solid var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sweet Delights Bakery</h1>
+    </header>
+    
+    <div class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">All Products</button>
+            <button class="filter-btn" data-category="cake">Cakes</button>
+            <button class="filter-btn" data-category="cookie">Cookies</button>
+        </div>
+        
+        <div class="products-grid" id="products-container">
+            <!-- Products will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Sweet Delights Bakery. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Product data
+        const products = [
+            {
+                "id": 101,
+                "name": "Classic Black Forest Cake",
+                "category": "cake",
+                "price": 45.5,
+                "size": "1kg",
+                "offer": "15% off",
+                "imagePath": "/images/black_forest_cake.jpg"
+            },
+            {
+                "id": 102,
+                "name": "Red Velvet Delight",
+                "category": "cake",
+                "price": 52.0,
+                "size": "1.2kg",
+                "offer": null,
+                "imagePath": "/images/red_velvet_cake.jpg"
+            },
+            {
+                "id": 201,
+                "name": "Chocolate Chip Cookies",
+                "category": "cookie",
+                "price": 12.9,
+                "size": "Pack of 12",
+                "offer": "Buy 2 get 1 free",
+                "imagePath": "/images/choco_chip_cookies.jpg"
+            },
+            {
+                "id": 103,
+                "name": "Fresh Strawberry Cheesecake",
+                "category": "cake",
+                "price": 48.75,
+                "size": "900g",
+                "offer": "10% off",
+                "imagePath": "/images/strawberry_cheesecake.jpg"
+            },
+            {
+                "id": 202,
+                "name": "Oatmeal Raisin Cookies",
+                "category": "cookie",
+                "price": 10.5,
+                "size": "Pack of 10",
+                "offer": null,
+                "imagePath": "/images/oatmeal_raisin.jpg"
+            },
+            {
+                "id": 104,
+                "name": "Carrot Cake with Cream Cheese Frosting",
+                "category": "cake",
+                "price": 46.0,
+                "size": "1kg",
+                "offer": null,
+                "imagePath": "/images/carrot_cake.jpg"
+            },
+            {
+                "id": 203,
+                "name": "Assorted Macarons",
+                "category": "cookie",
+                "price": 25.0,
+                "size": "Box of 6",
+                "offer": "Weekend Special",
+                "imagePath": "/images/macarons.jpg"
+            },
+            {
+                "id": 105,
+                "name": "Lemon Drizzle Loaf",
+                "category": "cake",
+                "price": 28.5,
+                "size": "500g",
+                "offer": "5% off",
+                "imagePath": "/images/lemon_drizzle.jpg"
+            },
+            {
+                "id": 204,
+                "name": "Gingerbread Men",
+                "category": "cookie",
+                "price": 15.0,
+                "size": "Pack of 8",
+                "offer": "Holiday Special",
+                "imagePath": "/images/gingerbread_men.jpg"
+            },
+            {
+                "id": 106,
+                "name": "Vegan Chocolate Avocado Mousse Cake",
+                "category": "cake",
+                "price": 55.0,
+                "size": "800g",
+                "offer": null,
+                "imagePath": "/images/vegan_avocado_cake.jpg"
+            }
+        ];
+        
+        // Display products
+        function displayProducts(filterCategory = 'all') {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+            
+            const filteredProducts = filterCategory === 'all' 
+                ? products 
+                : products.filter(product => product.category === filterCategory);
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                productCard.innerHTML = `
+                    <img src="${product.imagePath}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">${product.category}</span>
+                        <h2 class="product-name">${product.name}</h2>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-size">Size: ${product.size}</div>
+                        ${product.offer ? `<div class="product-offer">${product.offer}</div>` : ''}
+                    </div>
+                `;
+                
+                container.appendChild(productCard);
+            });
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            displayProducts();
+            
+            // Filter buttons functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const category = button.dataset.category;
+                    displayProducts(category);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

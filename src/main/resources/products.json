@@ -1,0 +1,92 @@
+[
+  {
+    "id": 10111111111,
+    "name": "Classic Black Forest Cake",
+    "category": "cake",
+    "price": 45.50,
+    "size": "1kg",
+    "offer": "15% off",
+    "imagePath": "/images/black_forest_cake.jpg"
+  },
+  {
+    "id": 102,
+    "name": "Red Velvet Delight",
+    "category": "cake",
+    "price": 52.00,
+    "size": "1.2kg",
+    "offer": null,
+    "imagePath": "/images/red_velvet_cake.jpg"
+  },
+  {
+    "id": 201,
+    "name": "Chocolate Chip Cookies",
+    "category": "cookie",
+    "price": 12.90,
+    "size": "Pack of 12",
+    "offer": "Buy 2 get 1 free",
+    "imagePath": "/images/choco_chip_cookies.jpg"
+  },
+  {
+    "id": 103,
+    "name": "Fresh Strawberry Cheesecake",
+    "category": "cake",
+    "price": 48.75,
+    "size": "900g",
+    "offer": "10% off",
+    "imagePath": "/images/strawberry_cheesecake.jpg"
+  },
+  {
+    "id": 202,
+    "name": "Oatmeal Raisin Cookies",
+    "category": "cookie",
+    "price": 10.50,
+    "size": "Pack of 10",
+    "offer": null,
+    "imagePath": "/images/oatmeal_raisin.jpg"
+  },
+  {
+    "id": 104,
+    "name": "Carrot Cake with Cream Cheese Frosting",
+    "category": "cake",
+    "price": 46.00,
+    "size": "1kg",
+    "offer": null,
+    "imagePath": "/images/carrot_cake.jpg"
+  },
+  {
+    "id": 203,
+    "name": "Assorted Macarons",
+    "category": "cookie",
+    "price": 25.00,
+    "size": "Box of 6",
+    "offer": "Weekend Special",
+    "imagePath": "/images/macarons.jpg"
+  },
+  {
+    "id": 105,
+    "name": "Lemon Drizzle Loaf",
+    "category": "cake",
+    "price": 28.50,
+    "size": "500g",
+    "offer": "5% off",
+    "imagePath": "/images/lemon_drizzle.jpg"
+  },
+  {
+    "id": 204,
+    "name": "Gingerbread Men",
+    "category": "cookie",
+    "price": 15.00,
+    "size": "Pack of 8",
+    "offer": "Holiday Special",
+    "imagePath": "/images/gingerbread_men.jpg"
+  },
+  {
+    "id": 106,
+    "name": "Vegan Chocolate Avocado Mousse Cake",
+    "category": "cake",
+    "price": 55.00,
+    "size": "800g",
+    "offer": null,
+    "imagePath": "/images/vegan_avocado_cake.jpg"
+  }
+]
